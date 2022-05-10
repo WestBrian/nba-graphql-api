@@ -37,11 +37,14 @@ async function startApolloServer() {
       ApolloServerPluginDrainHttpServer({ httpServer: app.server })
     ]
   })
+  const port = process.env.PORT || 4000
 
   await server.start()
   app.register(server.createHandler())
-  await app.listen(4000)
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  await app.listen(port)
+  console.log(
+    `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
+  )
 }
 
 startApolloServer()
