@@ -41,7 +41,7 @@ async function startApolloServer() {
 
   await server.start()
   app.register(server.createHandler())
-  await app.listen(port)
+  await app.listen(port, '0.0.0.0')
   console.log(
     `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
   )
